@@ -1,0 +1,96 @@
+<%- include('./partials/header') %>
+
+<main>
+  <div class="container">
+    <div class="rounded border shadow p-4">
+      <div class="d-flex justify-content-between mb-3">
+        <h2 class="">Hasil Perhitungan Sistem Pendukung Keputusan</h2>
+        <a href="/" class="btn btn-primary">Kembali</a>
+      </div><hr>
+
+      <% if (result.error) { %>
+        <div class="alert alert-warning" role="alert">
+          <p>Warning = <%= result.error.type %> (<%= JSON.stringify(result.error.context) %>)</p>
+        </div>
+      <% } %>
+
+      <div class="mb-3">
+        <canvas id="result-chart"></canvas>
+      </div>
+
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Tabel Hasil</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-stripped table-hover text-capitalize" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Ranking</th>
+                  <th>Kriteria</th>
+                  <th>Nilai</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let i = 1; result.sortedRankedScoreMap.forEach((item) => { %>
+                  <tr>
+                    <td><%= i++ %></td>
+                    <td><%= item[0] %></td>
+                    <td><%= item[1] %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <p class="fs-4 fw-bold">Analisis</p>
+      <div class="" style="white-space: pre-wrap; color: white; background-color: #0E1525; height: 400px; overflow-y: scroll;">
+        <!-- PRE Statement -->
+<pre>
+error: {
+  <% if (result.analytic.error)  { %>
+  type: '<%= result.analytic.error.type %>',
+  context: <%= JSON.stringify(result.analytic.error.context) %>
+  <% } else { %>
+  Null
+  <% } %>
+},
+rankingMatrix: [
+<% result.analytic.rankingMatrix.forEach(item => { %>
+  [<%=item%>]
+<% }) %>
+]
+itemRankMetaMap: {
+<% Object.entries(result.itemRankMetaMap).forEach(([key, value]) => { %>
+  <%= key %> : <%= JSON.stringify(value) %>
+<% }) %>
+}
+criteriaRankMetaMap: {
+<% Object.entries(result.criteriaRankMetaMap).forEach(([key, value]) => { %>
+  <%= key %> : <%= JSON.stringify(value) %>
+<% }) %>
+}
+rankedScoreMap: {
+<% Object.entries(result.rankedScoreMap).forEach(([key, value]) => { %>
+  <%= key %> : <%= JSON.stringify(value) %>
+<% }) %>
+}
+rankedScores: [
+<% result.rankedScores.forEach(item => { %>
+  <%= item %>,
+<% }) %>
+]
+log: <%=result.analytic.log %>
+</pre>
+
+      </div>
+      
+
+    </div>
+  </div>
+</main>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,180 @@
+<%- include('./partials/header') %>
+
+
+<div class="container">
+  <div class="rounded border shadow p-4">
+
+    <div class="d-flex justify-content-between mb-3">
+      <p class="fs-2 fw-bold">Data Sistem Pendukung Keputusan</p>
+      <a href="./result" class="btn btn-primary">Jalankan</a>
+    </div><hr>
+    
+
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card shadow mb-4">
+          <div class="card-header text-capitalize fw-bold">
+           Tabel Data Kriteria
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-stripped table-hover text-capitalize" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Nomor</th>
+                    <th>Kriteria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% let i = 1; data.criteria.forEach((item) => { %>
+                    <tr>
+                      <td><%= i++ %></td>
+                      <td><%= item %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card shadow mb-4">
+          <div class="card-header text-capitalize fw-bold">
+            Tabel Data Alternatif
+           </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-stripped table-hover text-capitalize" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Nomor</th>
+                    <th>Alternatif</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% i = 1; data.alternative.forEach((item) => { %>
+                    <tr>
+                      <td><%= i++ %></td>
+                      <td><%= item %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card shadow mb-4">
+      <div class="card-header text-capitalize fw-bold">
+        Tabel Data Skala Kriteria
+       </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-stripped table-hover text-capitalize" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Nomor</th>
+                <th>Kriteria 1</th>
+                <th>Kriteria 2</th>
+                <th>Skala</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% i = 1; data.rankCriteria.forEach((item) => { %>
+                <tr>
+                  <td><%= i++ %></td>
+                  <td><%= item[0] %></td>
+                  <td><%= item[1] %></td>
+                  <td><%= item[2].toFixed(2) %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <% if (data.rankCriteriaItem) { %>
+      <p class="fs-4 fw-bold">Data Skala Alternatif terhadap kriteria</p>
+      <div class="row mb-3">
+        <% Object.entries(data.rankCriteriaItem).forEach(([key, value]) => { %>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header text-capitalize fw-bold">
+                <%= key %>
+              </div>
+              <div class="card-body text-capitalize">
+                <div class="table-responsive">
+                  <table class="table table-stripped table-hover text-capitalize" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Kriteria 1</th>
+                        <th>Kriteria 2</th>
+                        <th>Skala</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% value.forEach(c => {
+                        Object.entries(c).forEach(([d, data]) => {  %>
+                        <tr>
+                          <td><%= data[0] %></td>
+                          <td><%= data[1] %></td>
+                          <td><%= data[2].toFixed(2) %></td>
+                        </tr>
+                      <% }) }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <% }); %>
+      </div>
+    <% } %>
+
+    <% if (data.criteriaItemRank) { %>
+      <p class="fs-4 fw-bold">Data Nilai Alternatif terhadap kriteria</p>
+      <div class="row">
+        <% Object.entries(data.criteriaItemRank).forEach(([key, value]) => { %>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header text-capitalize fw-bold">
+                <%= key %>
+              </div>
+              <div class="card-body text-capitalize">
+                <table class="table table-stripped table-hover text-capitalize" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                        <th>Alternatif</th>
+                        <th>Nilai</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% i = 0; value.forEach((item) => { %>
+                        <tr>
+                          <td>
+                            <%= data.alternative[i] %>
+                          </td>
+                          <td>
+                            <%= item %> %>
+                          </td>
+                        </tr>
+                      <% i++ }) %>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+
+
+  </div>
+</div>
+
+<%- include('./partials/footer') %>
