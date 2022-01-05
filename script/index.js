@@ -3,8 +3,6 @@ import AHP from './ahp.js'
 import express from 'express'
 
 import getAllData from './data.js'
-import sampleData from './sampleData.js'
-
 
 const ahpContext = new AHP()
 const app = express()
@@ -23,7 +21,6 @@ app.get('/data', async (req, res) => {
 app.get('/', async (req, res) => {
 
   const data = await getAllData()
-  // const data  = sampleData
 
   let rankCriteria = []
   Object.entries(data.rankCriteria[0]).forEach(([key, value]) => {
@@ -42,7 +39,6 @@ app.get('/', async (req, res) => {
 app.get('/result', async (req, res) => {
 
   const data = await getAllData()
-  // const data = sampleData
 
   // * set alternatives data
   ahpContext.addItems(data.alternative)

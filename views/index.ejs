@@ -1,12 +1,11 @@
 <%- include('./partials/header') %>
 
-
 <div class="container">
   <div class="rounded border shadow p-4">
 
     <div class="d-flex justify-content-between mb-3">
       <p class="fs-2 fw-bold">Data Sistem Pendukung Keputusan</p>
-      <a href="./result" class="btn btn-primary">Jalankan</a>
+      <a href="./result" class="btn btn-primary" style="height: 50px;">Jalankan</a>
     </div><hr>
     
 
@@ -88,7 +87,7 @@
                   <td><%= i++ %></td>
                   <td><%= item[0] %></td>
                   <td><%= item[1] %></td>
-                  <td><%= item[2].toFixed(2) %></td>
+                  <td><%= item[2] ? item[2].toFixed(2) : 'unknown error : silahkan ke halaman hasil lalu kembali ke halaman ini' %></td>
                 </tr>
               <% }) %>
             </tbody>
@@ -99,7 +98,7 @@
 
     <% if (data.rankCriteriaItem) { %>
       <p class="fs-4 fw-bold">Data Skala Alternatif terhadap kriteria</p>
-      <div class="row mb-3">
+      <div class="row mb-3 g-3">
         <% Object.entries(data.rankCriteriaItem).forEach(([key, value]) => { %>
           <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="card">

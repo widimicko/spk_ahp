@@ -58,76 +58,76 @@ const sampleData = {
     ]
   },
   // ! Object (criteria as a key) -> array -> Object (dump value (0, 1, 2, ...)) -> array (scale)
-  // "rankCriteriaItem": {
-  //   "style": [
-  //     {
-  //       "0": [
-  //         "civic",
-  //         "saturn",
-  //         0.25
-  //       ],
-  //       "1": [
-  //         "civic",
-  //         "escort",
-  //         4
-  //       ],
-  //       "2": [
-  //         "civic",
-  //         "miata",
-  //         0.16666666666666666
-  //       ],
-  //       "3": [
-  //         "saturn",
-  //         "escort",
-  //         4
-  //       ],
-  //       "4": [
-  //         "saturn",
-  //         "miata",
-  //         0.25
-  //       ],
-  //       "5": [
-  //         "escort",
-  //         "miata",
-  //         0.2
-  //       ]
-  //     }
-  //   ],
-  //   "reliability": [
-  //     {
-  //       "0": [
-  //         "civic",
-  //         "saturn",
-  //         2
-  //       ],
-  //       "1": [
-  //         "civic",
-  //         "escort",
-  //         5
-  //       ],
-  //       "2": [
-  //         "civic",
-  //         "miata",
-  //         1
-  //       ],
-  //       "3": [
-  //         "saturn",
-  //         "escort",
-  //         3
-  //       ],
-  //       "4": [
-  //         "saturn",
-  //         "miata",
-  //         2
-  //       ],
-  //       "5": [
-  //         "escort",
-  //         "miata",
-  //         0.25
-  //       ]
-  //     }
-  //   ]
-  // }
+  "rankCriteriaItem": {
+    "style": [
+      {
+        "0": [
+          "civic",
+          "saturn",
+          0.25
+        ],
+        "1": [
+          "civic",
+          "escort",
+          4
+        ],
+        "2": [
+          "civic",
+          "miata",
+          0.16666666666666666
+        ],
+        "3": [
+          "saturn",
+          "escort",
+          4
+        ],
+        "4": [
+          "saturn",
+          "miata",
+          0.25
+        ],
+        "5": [
+          "escort",
+          "miata",
+          0.2
+        ]
+      }
+    ],
+    "reliability": [
+      {
+        "0": [
+          "civic",
+          "saturn",
+          2
+        ],
+        "1": [
+          "civic",
+          "escort",
+          5
+        ],
+        "2": [
+          "civic",
+          "miata",
+          1
+        ],
+        "3": [
+          "saturn",
+          "escort",
+          3
+        ],
+        "4": [
+          "saturn",
+          "miata",
+          2
+        ],
+        "5": [
+          "escort",
+          "miata",
+          0.25
+        ]
+      }
+    ]
+  }
 }
 
 export default sampleData
