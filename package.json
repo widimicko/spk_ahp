@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ./script/index.js"
+    "server": "nodemon ./script/index.js",
+    "start": "node ./script/index.js"
   },
   "keywords": [],
   "author": "",
